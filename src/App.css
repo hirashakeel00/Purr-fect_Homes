@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Pacifico&family=Parkinsans:wght@300..800&family=Poppins:ital,wght@0,400;0,500;1,200&display=swap');
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+  list-style: none;
+  text-decoration: none;
+}
+
+:root{
+  --btn:#64A651;
+  --mainClr1:#538A44;
+  --mainclr2:#74C25F;
+  --header:#c5e1a5;
+}
+body{
+ font-family: "Parkinsans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin:auto;
+  }
+  
+  
+  .app-footer {
+    background-color: #f1f1f1;
+    color: #666;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  
+  .app-footer p {
+    margin: 0;
+    font-size: 0.875rem;
+  }
+  .oswald-titlespan{
+    font-family: "Pacifico", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  #spanHome{
+    color:var(--mainClr1);
+  }
+
+  #spanPf{
+    color:var(--mainClr1);
+  }
+
+ #lensDText{
+  font-size: 1.7rem;
+  font-weight:500;
+  text-align: center;
+  color:var(--mainClr1);
+ }
+
+ .home-page {
+  padding: 2rem 0;
+}
+
+.featured-section h3{
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  margin-top:4rem;
+  color:#538A44;
+  text-align: center;
+}
+
+.whyus-section h3 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  /* margin-top:5rem; */
+  color:#c5e1a5;
+  text-align: center;
+}
+
+#Bg1 {
+  background-color: #c5e1a5; 
+  background-size: cover;
+  text-align: center;
+  padding: 2rem;
+  min-height:100vh;
+  width:100%;
+  position: relative;
+}
+
+svg{
+  position:absolute;
+  top:-190px;
+  left:0;
+}
+
+#Bg2{
+  background-color: #64A651;
+  padding:1.5rem;
+  min-height:100vh;
+  width:100%;
+  position: relative;
+}
+
