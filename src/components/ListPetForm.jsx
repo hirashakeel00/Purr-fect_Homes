@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { Container, Typography, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Checkbox, Button, Box, Card, CardContent, FormGroup } from "@mui/material";
-import PetsIcon from "@mui/icons-material/Pets";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import RabbitIcon from "@mui/icons-material/Pets";
+import { Container,Typography,CardMedia, FormControl, RadioGroup, FormControlLabel, Radio, Checkbox, Button, Box, Card, CardContent, FormGroup,TextField ,Grid} from "@mui/material";
+import cat1 from '../assets/cat1.png';
+import cat2 from '../assets/cat2.png';
+import cat3 from '../assets/cat3.png';
 
 export default function ListPetForm() {
   const [petType, setPetType] = useState("");
-  const [bondedPair, setBondedPair] = useState("no");
   const [reasons, setReasons] = useState([]);
   const [duration, setDuration] = useState("1 month");
 
@@ -17,15 +16,40 @@ export default function ListPetForm() {
     );
   };
 
+    const [images, setImages] = useState([]);
+  
+    const handleImageChange = (event) => {
+      const files = Array.from(event.target.files);
+      if (files.length + images.length >= 3) {
+        const newImages = files.map((file) => URL.createObjectURL(file));
+        setImages((prevImages) => [...prevImages, ...newImages]);
+      } else {
+        alert("Please select at least 3 images.");
+      }
+    };
+  
+    const handleButtonClick = () => {
+      document.getElementById("imageInput").click();
+    };
+  
+
+  const petImages = {
+    Dog: cat1,
+    Cat: cat2,
+    Rabbit: cat3,
+  };
+
   return (
-    <Container maxWidth="sm" sx={{ mt: 4, display: "flex", justifyContent: "space-between", flexDirection: 'column' }}>
-      <Typography variant="h5" gutterBottom>
-        Step 1: The Basics
-      </Typography>
+    <Container maxWidth="sm" sx={{ 
+      mt: 4, 
+      display: "flex", 
+      justifyContent: "space-between", 
+      flexDirection: 'column',
+      letterSpacing:'2px'}}>
       
-      <FormControl component="fieldset" sx={{ mb: 2 }}>
-        <FormLabel component="legend">What type of pet are you rehoming? *</FormLabel>
-        <Box sx={{ display: "flex", gap: 2, mt: 1 }}>
+      <FormControl component="fieldset" sx={{ mb:2}}>
+        <Typography sx={{fontSize:'20px',fontWeight:"600"}}>What type of pet are you rehoming? *</Typography>
+        <Box sx={{ display: "flex", gap: 1, mt: 1, overflow: "hidden",width:'39rem',height:'12rem'}}>
           {["Dog", "Cat", "Rabbit"].map((pet) => (
             <Card
               key={pet}
@@ -33,14 +57,20 @@ export default function ListPetForm() {
               sx={{
                 textAlign: "center",
                 cursor: "pointer",
-                border: petType === pet ? "2px solid green" : "1px solid gray",
+                border: petType === pet ? "2px solid green" : "1px solid #b8ecaa",
                 flex: 1,
+                pt:1,
+                backgroundColor:'#b8ecaa',
               }}
             >
+               <CardMedia
+        component="img"
+        height="100"
+        image={petImages[pet]}
+        alt={pet}
+        sx={{ objectFit: "cover"}}
+      />
               <CardContent>
-                {pet === "Dog" && <PetsIcon fontSize="large" />}
-                {pet === "Cat" && <FavoriteIcon fontSize="large" />}
-                {pet === "Rabbit" && <RabbitIcon fontSize="large" />}
                 <Typography>{pet}</Typography>
               </CardContent>
             </Card>
@@ -48,32 +78,30 @@ export default function ListPetForm() {
         </Box>
       </FormControl>
 
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-        <FormControl component="fieldset" sx={{ mb: 2 }}>
-          <FormLabel component="legend">Are you rehoming a bonded pair? *</FormLabel>
-          <RadioGroup 
-  row 
-  value={bondedPair} 
-  onChange={(e) => setBondedPair(e.target.value)} 
-  sx={{ display: "flex", alignItems: "center" }}
->
-  <FormControlLabel 
-    value="no" 
-    control={<Radio />} 
-    label="No" 
-    sx={{ marginRight: 2 }} // Ensures spacing between the options
-  />
-  <FormControlLabel 
-    value="yes" 
-    control={<Radio />} 
-    label="Yes" 
-  />
-</RadioGroup>
 
+
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+
+      <FormControl component="fieldset" sx={{ mb: 2 }}>
+        <Typography sx={{fontSize:'20px',fontWeight:"600"}}>If you are rehoming any other pet except above,write here
+</Typography>
+          <TextField></TextField>
+        </FormControl>
+
+        <FormControl component="fieldset" sx={{ mb: 2 }}>
+        <Typography sx={{fontSize:'20px',fontWeight:"600"}}>Where are you currently based?*
+</Typography>
+          <TextField></TextField>
+        </FormControl>
+
+        <FormControl component="fieldset" sx={{ mb: 3 }}>
+        <Typography sx={{fontSize:'20px',fontWeight:"600"}}>Pet description*
+</Typography>
+          <TextField placeholder="Luna is an affectionate 2-year-old tabby cat looking for her forever home"></TextField>
         </FormControl>
         
-        <FormControl component="fieldset" sx={{ mb: 2 }}>
-          <FormLabel component="legend">Why do you need to rehome your pet? *</FormLabel>
+        <FormControl component="fieldset" sx={{ mb: 3 }}>
+        <Typography sx={{fontSize:'20px',fontWeight:"600"}}>Why do you need to rehome your pet? *</Typography>
           <FormGroup sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
             {[
               "Behavioural Issues",
@@ -99,16 +127,86 @@ export default function ListPetForm() {
         </FormControl>
       </Box>
 
-      <FormLabel component="legend" sx={{ mt: 3 }}>How long are you able to keep your pet/s while we help find a suitable new home? *</FormLabel>
+
+      <Typography sx={{fontSize:'20px',fontWeight:"600"}}>What is the primary color of your pet</Typography>
       <FormControl>
-        <RadioGroup value={duration} onChange={(e) => setDuration(e.target.value)} sx={{ border: '2px solid red' }}>
-          {["Less than 1 month", "1 month", "2 months", "Until a home is found"].map((option) => (
-            <FormControlLabel key={option} value={option} control={<Radio />} label={option} sx={{ display: 'flex', alignItems: 'center', gap: 1 }} />
-          ))}
-        </RadioGroup>
+        <TextField sx={{mb: 3}}></TextField>
+      </FormControl>
+      <Typography sx={{fontSize:'20px',fontWeight:"600"}}>What is the weight of your pet</Typography>
+      <FormControl>
+        <TextField sx={{mb: 3}}></TextField>
+      </FormControl><Typography sx={{fontSize:'20px',fontWeight:"600"}}>What is the size of your pet</Typography>
+      <FormControl>
+        <TextField sx={{mb: 3}}></TextField>
+      </FormControl>
+
+      <FormControl>
+      <Typography sx={{fontSize:'20px',fontWeight:"600"}}>What is the gender of your pet</Typography>
+      <RadioGroup sx={{mb: 3}}
+        column={true}
+        aria-labelledby="demo-form-control-label-placement"
+        name="position"
+        defaultValue="top"
+      >
+        <FormControlLabel
+          value="Female"
+          control={<Radio />}
+          label="Female"
+          labelPlacement="End"
+        />
+        <FormControlLabel value="Male" control={<Radio />} label="Male" />
+      </RadioGroup>
+    </FormControl>
+
+    <Typography sx={{fontSize:'20px',fontWeight:"600"}}>What is the age of your pet</Typography>
+      <FormControl>
+        <TextField sx={{mb: 3}}></TextField>
+      </FormControl><Typography sx={{fontSize:'20px',fontWeight:"600"}}>What is the breed of your pet</Typography>
+      <FormControl>
+        <TextField sx={{mb: 3}}></TextField>
+      </FormControl><Typography sx={{fontSize:'20px',fontWeight:"600"}}>What is the primary color of your pet</Typography>
+      <FormControl>
+        <TextField sx={{mb: 3}}></TextField>
       </FormControl>
       
-      <Button variant="contained" color="primary" sx={{ mt: 2 }}>Continue</Button>
+      <Box sx={{ textAlign: "center", mt: 2 }}>
+      <input
+        type="file"
+        id="imageInput"
+        accept="image/*"
+        multiple
+        style={{ display: "none" }}
+        onChange={handleImageChange}
+      />
+      {images.length >= 3 ? (
+        <Grid container spacing={4} justifyContent="center">
+          {images.map((image, index) => (
+            <Grid item key={index}>
+              <img
+                src={image}
+                alt={`Uploaded ${index + 1}`}
+                style={{ width: "150px", height: "150px", borderRadius: "5px", objectFit: "cover" }}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      ) : (
+        <Button
+          variant="contained"
+          sx={{ backgroundColor: "#64A651", mt: 2, mb: 5 }}
+          onClick={handleButtonClick}
+        >
+          Upload Image
+        </Button>
+      )}
+    </Box>
+
+    <Button variant='contained' sx={{backgroundColor:'#64A651', mt:2,
+                                             "&:hover": {
+                                              backgroundColor: "#538A44", // Background color on hover
+                                              },}}>List the Pet
+            </Button>
+
     </Container>
   );
 }

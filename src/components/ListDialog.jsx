@@ -31,7 +31,7 @@ export default function ListDialog({ open, handleClose }) {
         <p>1) We are NOT a <strong>rescue centre</strong> so we can't take pets directly into our care. We help you find a suitable adopter.</p>
         <p>2)  You won’t get paid for your pet but it is <strong>free</strong> to list them with our Charity.</p>
         <p>3)  We ONLY support the rehoming of pets that are living in <strong>Pakistan</strong>.</p>
-        <p>4) All listings are subject to approval by the PetRehomer team. Before we post your listing on the site, we’ll check your pet’s profile thoroughly. If we have any questions, we will give you a call.</p>
+        <p>4) All listings are subject to approval by the Purr-fect Homes team. Before we post your listing on the site, we’ll check your pet’s profile thoroughly. If we have any questions, we will give you a call.</p>
       </DialogContent>
 
       <DialogActions>

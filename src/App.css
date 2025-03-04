@@ -63,7 +63,6 @@ body{
  .home-page {
   padding: 2rem 0;
 }
-
 .featured-section h3{
   font-size: 3rem;
   margin-bottom: 1rem;
@@ -90,7 +89,7 @@ body{
   position: relative;
 }
 
-svg{
+#wave{
   position:absolute;
   top:-190px;
   left:0;

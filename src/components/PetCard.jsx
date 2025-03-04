@@ -26,6 +26,7 @@ const PetCard = () => {
     dateOfArrival: "12/7/2024",
     age: "Estimated 6Y",
     sex: "Female",
+    breed:"British Shorthair",
   };
 
   if (!location.state) {
@@ -132,7 +133,7 @@ const PetCard = () => {
               lineHeight: 1.8,
             }}
           >
-            The Animal Foundation Team is getting to know me better. Here's what they have to share so far:
+            The Purr-fect Homes Team is getting to know me better. Here's what they have to share so far:
           </Typography>
           <Typography
             variant="h6"
@@ -142,7 +143,7 @@ const PetCard = () => {
               color: "#538A44",
             }}
           >
-            My Special Considerations
+            About Me
           </Typography>
           <Typography
             variant="body2"
@@ -154,6 +155,25 @@ const PetCard = () => {
             }}
           >
             {petDetails.specialConsiderations}
+          </Typography>
+
+          <Typography  variant="h6"
+            sx={{
+              marginTop: "1.5rem",
+              fontWeight: "bold",
+              color: "#538A44",
+            }}>
+            Reason for rehoming
+          </Typography>
+          <Typography 
+          variant="body2"
+            sx={{
+              marginTop: "1rem",
+              color: "#333",
+              lineHeight: 1.8,
+              fontSize: "0.95rem",
+            }}>
+            
           </Typography>
         </Grid>
 
@@ -180,7 +200,11 @@ const PetCard = () => {
               label: "Age", value: petDetails.age,
             }, {
               label: "Sex", value: petDetails.sex,
-            }].map((detail, index) => (
+            },
+            {
+              label: "Breed", value: petDetails.breed,
+            },
+          ].map((detail, index) => (
               <Typography
                 key={index}
                 variant="body2"
