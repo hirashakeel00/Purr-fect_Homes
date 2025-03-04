@@ -3,6 +3,7 @@ import { Container,Typography,CardMedia, FormControl, RadioGroup, FormControlLab
 import cat1 from '../assets/cat1.png';
 import cat2 from '../assets/cat2.png';
 import cat3 from '../assets/cat3.png';
+import cat4 from '../assets/cat4.png';
 
 export default function ListPetForm() {
   const [petType, setPetType] = useState("");
@@ -37,6 +38,7 @@ export default function ListPetForm() {
     Dog: cat1,
     Cat: cat2,
     Rabbit: cat3,
+    Other:cat4
   };
 
   return (
@@ -50,7 +52,7 @@ export default function ListPetForm() {
       <FormControl component="fieldset" sx={{ mb:2}}>
         <Typography sx={{fontSize:'20px',fontWeight:"600"}}>What type of pet are you rehoming? *</Typography>
         <Box sx={{ display: "flex", gap: 1, mt: 1, overflow: "hidden",width:'39rem',height:'12rem'}}>
-          {["Dog", "Cat", "Rabbit"].map((pet) => (
+          {["Dog", "Cat", "Rabbit","Other"].map((pet) => (
             <Card
               key={pet}
               onClick={() => setPetType(pet)}
@@ -81,12 +83,6 @@ export default function ListPetForm() {
 
 
       <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-
-      <FormControl component="fieldset" sx={{ mb: 2 }}>
-        <Typography sx={{fontSize:'20px',fontWeight:"600"}}>If you are rehoming any other pet except above,write here
-</Typography>
-          <TextField></TextField>
-        </FormControl>
 
         <FormControl component="fieldset" sx={{ mb: 2 }}>
         <Typography sx={{fontSize:'20px',fontWeight:"600"}}>Where are you currently based?*
