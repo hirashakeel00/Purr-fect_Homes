@@ -16,7 +16,7 @@ export default function HowToAdopt() {
           justifyContent: "center",
           flexDirection: "column",
           p: { xs: 3, sm: 5, md: 7 },
-          mt: 4,
+          mt: 2,
           backgroundColor: "#dcedc8",
           gap: 3,
         }}
@@ -45,6 +45,7 @@ export default function HowToAdopt() {
             <MenuItem value="Cats">Cats</MenuItem>
             <MenuItem value="Birds">Birds</MenuItem>
             <MenuItem value="Rabbits">Rabbits</MenuItem>
+            <MenuItem value="Rabbits">Other</MenuItem>
           </TextField>
 
           {/* Location Input */}
@@ -84,7 +85,7 @@ export default function HowToAdopt() {
             <span>100 </span>matching animals
           </Box>
 
-          <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+          <Box sx={{ display: "flex", gap: 4.5, flexWrap: "wrap" }}>
             {/* Sort Dropdown */}
             <TextField
               select

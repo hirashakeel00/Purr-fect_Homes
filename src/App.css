@@ -89,10 +89,22 @@ body{
   position: relative;
 }
 
-#wave{
-  position:absolute;
-  top:-190px;
-  left:0;
+#wave {
+  position: absolute;
+  top: -190px;
+  left: 0;
+}
+
+@media (max-width: 768px) {
+  #wave {
+    top: -100px; /* Adjust for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  #wave {
+    top: -30px; /* Further adjust for extra-small screens */
+  }
 }
 
 #Bg2{
