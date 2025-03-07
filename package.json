@@ -1,5 +1,7 @@
 {
   "name": "purr-fect-homes",
+  "author":"Hira Shakeel",
+  "description": "A pet adoption website for pet lovers",
   "private": true,
   "version": "0.0.0",
   "type": "module",

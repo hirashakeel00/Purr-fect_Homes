@@ -51,7 +51,7 @@ export default function ListPetForm() {
       
       <FormControl component="fieldset" sx={{ mb:2}}>
         <Typography sx={{fontSize:'20px',fontWeight:"600"}}>What type of pet are you rehoming? *</Typography>
-        <Box sx={{ display: "flex", gap: 1, mt: 1, overflow: "hidden",width:'39rem',height:'12rem'}}>
+        <Box sx={{ display: "flex", gap: 1, mt: 1, overflow: "hidden",width:'45rem',height:'15rem'}}>
           {["Dog", "Cat", "Rabbit","Other"].map((pet) => (
             <Card
               key={pet}
